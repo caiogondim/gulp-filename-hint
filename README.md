@@ -46,6 +46,21 @@ Default: `'lower'`
 
 Values: `'upper', 'lower', 'mixed'`
 
+#### options.regExp
+
+Type: `RegExp`
+
+Default: `undefined`
+
+Only RegExp's with begin (`^`) and end (`$`) boundaries should be used.
+
+```js
+gulp.task('test', function () {
+  return gulp.src('src/*.js')
+    .pipe(filenameHint({regExp: /^\w*$/}));
+});
+```
+
 
 ## License
 The MIT License (MIT)

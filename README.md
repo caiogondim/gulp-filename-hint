@@ -32,20 +32,6 @@ gulp.task('test', function () {
 
 ### filenameHint(options)
 
-#### options.wordSeparator
-
-Type: `String`
-
-Default: `'_'`
-
-#### options.case
-
-Type: `String`
-
-Default: `'lower'`
-
-Values: `'upper', 'lower', 'mixed'`
-
 #### options.regExp
 
 Type: `RegExp`
@@ -79,6 +65,17 @@ gulp.task('test', function () {
     }));
 });
 ```
+
+#### options.case
+
+Type: `String`
+
+Default: `'lower'`
+
+Values: `'UPPER_CASE', 'lowercase', 'lowerCamelCase', 'UpperCamelCase',
+'snake_case', 'train-case'`
+
+Not implemented yet.
 
 ## License
 The MIT License (MIT)

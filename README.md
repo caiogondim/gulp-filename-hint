@@ -61,6 +61,24 @@ gulp.task('test', function () {
 });
 ```
 
+#### options.whiteList
+
+Type: `Array`
+
+Default: `[]`
+
+An array with allowed filenames. All names here will be automatically
+interpreted as valid ones.
+
+```js
+gulp.task('test', function () {
+  return gulp.src('src/*.js')
+    .pipe(filenameHint({
+      regExp: /^\w*$/,
+      whiteList: ['README.md']
+    }));
+});
+```
 
 ## License
 The MIT License (MIT)

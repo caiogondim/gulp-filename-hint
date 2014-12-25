@@ -4,6 +4,7 @@
 'use strict'
 
 var gulp = require('gulp')
+var runSequence = require('run-sequence')
 var assert = require('assert')
 var filenameHint = require('../')
 
@@ -92,6 +93,11 @@ it('should not accept filenames that does not match with `options.regExp`',
 it('should ignore files in `options.whiteList` even if they don\'t match ' +
    'with `options.regExp`',
    function(done) {
+  // Prevents log of "Starting task1" by monkey-patch'ing `console.log` with
+  // a no-op function
+  var pristineConsoleLog = console.log
+  console.log = function() {}
+
   gulp.task('task1', function() {
     return gulp.src('test/files/**/*.*')
       .pipe(filenameHint({
@@ -104,5 +110,8 @@ it('should ignore files in `options.whiteList` even if they don\'t match ' +
     done()
   })
 
-  gulp.start('task2')
+  runSequence('task1', 'task2', function() {
+    // Restores the original value of `console.log`
+    console.log = pristineConsoleLog
+  })
 })

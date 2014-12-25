@@ -66,17 +66,6 @@ gulp.task('test', function () {
 });
 ```
 
-#### options.case
-
-Type: `String`
-
-Default: `'lower'`
-
-Values: `'UPPER_CASE', 'lowercase', 'lowerCamelCase', 'UpperCamelCase',
-'snake_case', 'train-case'`
-
-Not implemented yet.
-
 ## License
 The MIT License (MIT)
 

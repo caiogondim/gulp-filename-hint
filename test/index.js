@@ -1,8 +1,10 @@
+/* jshint node: true */
+/* global it */
+
 'use strict';
 
 var gulp = require('gulp');
 var assert = require('assert');
-var gulpUtil = require('gulp-util');
 var filenameHint = require('../');
 
 it('should throw an error if `options` are not declared', function(done) {
@@ -15,7 +17,9 @@ it('should throw an error if `options` are not declared', function(done) {
   });
 });
 
-it('should throw an error if `options.whiteList` is defined and is not an Array', function(done) {
+it('should throw an error if `options.whiteList` ' + 
+   'is defined and is not an Array', 
+   function(done) {
   var stream = gulp.src('test/files/**/*.*')
     .pipe(filenameHint({
       whiteList: 'readme.md', 
@@ -28,7 +32,8 @@ it('should throw an error if `options.whiteList` is defined and is not an Array'
   })
 });
 
-it('should throw an error if `options.whiteList` has any non-String item', function(done) {
+it('should throw an error if `options.whiteList` has any non-String item', 
+   function(done) {
   var stream = gulp.src('test/files/**/*.*')
     .pipe(filenameHint({
       whiteList: ['lorem.txt', 1, 'ipsum.txt'], 
@@ -41,7 +46,8 @@ it('should throw an error if `options.whiteList` has any non-String item', funct
     });
 });
 
-it('should throw an error if `options.regExp` is not defined', function(done) {
+it('should throw an error if `options.regExp` is not defined', 
+   function(done) {
   var stream = gulp.src('test/files/**/*.*')
     .pipe(filenameHint({
       whiteList: ['lorem.txt', 'ipsum.txt']
@@ -53,7 +59,8 @@ it('should throw an error if `options.regExp` is not defined', function(done) {
     });
 });
 
-it('should throw an error if `options.regExp` is not a RegExp', function(done) {
+it('should throw an error if `options.regExp` is not a RegExp', 
+   function(done) {
   var stream = gulp.src('test/files/**/*.*')
     .pipe(filenameHint({
       whiteList: ['lorem.txt', 'ipsum.txt'], 
@@ -66,7 +73,8 @@ it('should throw an error if `options.regExp` is not a RegExp', function(done) {
     })
 });
 
-it('should not accept filenames that does not match with `options.regExp`', function(done) {
+it('should not accept filenames that does not match with `options.regExp`', 
+   function(done) {
   var stream = gulp.src('test/files/**/*.*')
     .pipe(filenameHint({
       whiteList: ['lorem.txt', 'ipsum.txt'], 
@@ -74,12 +82,17 @@ it('should not accept filenames that does not match with `options.regExp`', func
     }));
 
     stream.on('error', function(error) {
-      assert(error.message.indexOf('is not a valid filename based on passed RegExp') >= 0);
+      assert(error
+        .message
+        .indexOf('is not a valid filename based on passed RegExp') >= 0
+      );
       done();
     })
 });
 
-it('should ignore files in `options.whiteList` even if they don\'t match with `options.regExp`', function(done) {
+it('should ignore files in `options.whiteList` even if they don\'t match ' + 
+   'with `options.regExp`', 
+   function(done) {
   gulp.task('task1', function() {
     return gulp.src('test/files/**/*.*')
       .pipe(filenameHint({

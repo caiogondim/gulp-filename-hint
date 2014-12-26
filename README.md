@@ -1,6 +1,6 @@
 # Gulp filename hint [![Build Status](https://secure.travis-ci.org/caiogondim/gulp-filename-hint.svg)](https://travis-ci.org/caiogondim/gulp-filename-hint)
 
-<img src="https://raw.githubusercontent.com/caiogondim/gulp-filename-hint/master/icon/icon.png" align="right" />
+<img src="https://raw.githubusercontent.com/caiogondim/gulp-filename-hint/master/icon/icon.png" align="right" width="200" />
 
 > Lint as a term can also refer more broadly to syntactic discrepancies in
 > general, especially in interpreted languages like JavaScript and Python. For
